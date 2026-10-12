@@ -20,7 +20,7 @@ Região `us-east-1` (a mais barata e a disponível no AWS Academy).
 
 ### Security Groups
 
-**`sg-togglemaster-ec2`** (entrada):
+**`togglemaster-ec2`** (entrada):
 
 | Porta | Origem | Motivo |
 | :-- | :-- | :-- |
@@ -29,11 +29,11 @@ Região `us-east-1` (a mais barata e a disponível no AWS Academy).
 | TCP 443 | `0.0.0.0/0` | HTTPS |
 | TCP 5000 | `0.0.0.0/0` | Porta em que o Gunicorn escuta |
 
-**`sg-togglemaster-rds`** (entrada):
+**`togglemaster-rds`** (entrada):
 
 | Porta | Origem | Motivo |
 | :-- | :-- | :-- |
-| TCP 5432 | `sg-togglemaster-ec2` | Só a EC2 fala com o banco |
+| TCP 5432 | `togglemaster-ec2` | Só a EC2 fala com o banco |
 
 ### Decisões
 
@@ -45,7 +45,7 @@ Região `us-east-1` (a mais barata e a disponível no AWS Academy).
 
 ## 2. Estimativa de custo mensal
 
-Valores on-demand aproximados de `us-east-1`, 730 h/mês. **Confirmar na [Calculadora de Preços da AWS](https://calculator.aws/) e tirar o print de lá** — ele é um entregável.
+Valores on-demand de `us-east-1`, 730 h/mês, conferidos na Calculadora de Preços da AWS: [estimativa online](https://calculator.aws/#/estimate?id=40fbee999ab3b0eb10e55fa3d4296b170c23d4fe) e [exportação em PDF](calculadora-aws.pdf).
 
 | Item | Cálculo | US$/mês |
 | :-- | :-- | --: |

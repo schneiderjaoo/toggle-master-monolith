@@ -31,21 +31,21 @@
           <mxGeometry x="700" y="450" width="250" height="90" as="geometry" />
         </mxCell>
 
-        <mxCell id="sgec2" value="Security Group: sg-togglemaster-ec2" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#DD344C;dashed=1;verticalAlign=top;align=left;spacingLeft=8;spacingTop=0;fontColor=#DD344C;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="sgec2" value="Security Group: togglemaster-ec2" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#DD344C;dashed=1;verticalAlign=top;align=left;spacingLeft=8;spacingTop=0;fontColor=#DD344C;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="340" y="205" width="250" height="140" as="geometry" />
         </mxCell>
         <mxCell id="ec2" value="EC2 t3.micro (IP público)&lt;br&gt;Gunicorn + Flask :5000" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#ED7100;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.ec2;" vertex="1" parent="1">
           <mxGeometry x="441" y="235" width="48" height="48" as="geometry" />
         </mxCell>
 
-        <mxCell id="sgrds" value="Security Group: sg-togglemaster-rds" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#DD344C;dashed=1;verticalAlign=top;align=left;spacingLeft=8;spacingTop=0;fontColor=#DD344C;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="sgrds" value="Security Group: togglemaster-rds" style="rounded=1;arcSize=6;whiteSpace=wrap;html=1;fillColor=none;strokeColor=#DD344C;dashed=1;verticalAlign=top;align=left;spacingLeft=8;spacingTop=0;fontColor=#DD344C;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="340" y="435" width="250" height="140" as="geometry" />
         </mxCell>
         <mxCell id="rds" value="RDS PostgreSQL db.t3.micro&lt;br&gt;Single-AZ, sem acesso público" style="sketch=0;outlineConnect=0;fontColor=#232F3E;fillColor=#C925D1;strokeColor=#ffffff;verticalLabelPosition=bottom;verticalAlign=top;align=center;html=1;fontSize=11;aspect=fixed;shape=mxgraph.aws4.resourceIcon;resIcon=mxgraph.aws4.rds;" vertex="1" parent="1">
           <mxGeometry x="441" y="465" width="48" height="48" as="geometry" />
         </mxCell>
 
-        <mxCell id="rules" value="&lt;b&gt;Tabelas de rotas&lt;/b&gt;&lt;br&gt;Pública: 10.0.0.0/16 → local; 0.0.0.0/0 → Internet Gateway&lt;br&gt;Privada: 10.0.0.0/16 → local (sem saída para a internet)&lt;br&gt;&lt;br&gt;&lt;b&gt;sg-togglemaster-ec2 (entrada)&lt;/b&gt;&lt;br&gt;TCP 80, 443 e 5000 ← 0.0.0.0/0&lt;br&gt;TCP 22 ← somente meu IP/32&lt;br&gt;&lt;br&gt;&lt;b&gt;sg-togglemaster-rds (entrada)&lt;/b&gt;&lt;br&gt;TCP 5432 ← sg-togglemaster-ec2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFBE6;strokeColor=#D6B656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=11;" vertex="1" parent="1">
+        <mxCell id="rules" value="&lt;b&gt;Tabelas de rotas&lt;/b&gt;&lt;br&gt;Pública: 10.0.0.0/16 → local; 0.0.0.0/0 → Internet Gateway&lt;br&gt;Privada: 10.0.0.0/16 → local (sem saída para a internet)&lt;br&gt;&lt;br&gt;&lt;b&gt;togglemaster-ec2 (entrada)&lt;/b&gt;&lt;br&gt;TCP 80, 443 e 5000 ← 0.0.0.0/0&lt;br&gt;TCP 22 ← somente meu IP/32&lt;br&gt;&lt;br&gt;&lt;b&gt;togglemaster-rds (entrada)&lt;/b&gt;&lt;br&gt;TCP 5432 ← togglemaster-ec2" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#FFFBE6;strokeColor=#D6B656;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;fontSize=11;" vertex="1" parent="1">
           <mxGeometry x="680" y="170" width="290" height="190" as="geometry" />
         </mxCell>
 

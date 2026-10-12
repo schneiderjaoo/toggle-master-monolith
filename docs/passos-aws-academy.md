@@ -46,7 +46,7 @@ A Calculadora de Preços é pública e não depende da conta do laboratório.
 
 Criar os dois na `togglemaster-vpc`, nesta ordem.
 
-**`sg-togglemaster-ec2`** — regras de entrada:
+**`togglemaster-ec2`** — regras de entrada:
 
 | Tipo | Porta | Origem |
 | :-- | :-- | :-- |
@@ -55,11 +55,11 @@ Criar os dois na `togglemaster-vpc`, nesta ordem.
 | HTTPS | 443 | `0.0.0.0/0` |
 | Custom TCP | 5000 | `0.0.0.0/0` |
 
-**`sg-togglemaster-rds`** — regra de entrada:
+**`togglemaster-rds`** — regra de entrada:
 
 | Tipo | Porta | Origem |
 | :-- | :-- | :-- |
-| PostgreSQL | 5432 | `sg-togglemaster-ec2` (selecionar o grupo, não um IP) |
+| PostgreSQL | 5432 | `togglemaster-ec2` (selecionar o grupo, não um IP) |
 
 > Se o seu IP mudar (outra rede, outro dia), o SSH para de conectar: editar a regra e escolher *My IP* de novo.
 
@@ -70,7 +70,7 @@ Criar os dois na `togglemaster-vpc`, nesta ordem.
    - *Standard create*, **PostgreSQL**, template *Free tier* (ou *Dev/Test*, Single-AZ).
    - Identificador `togglemaster-db`; usuário master e senha próprios (*Self managed*). Anotar fora do repositório.
    - Classe `db.t3.micro`; storage 20 GB; desmarcar *storage autoscaling*.
-   - *Connectivity*: *Don't connect to an EC2 compute resource*, VPC `togglemaster-vpc`, subnet group `togglemaster-db-subnets`, **Public access: No**, SG existente `sg-togglemaster-rds` (remover o `default`).
+   - *Connectivity*: *Don't connect to an EC2 compute resource*, VPC `togglemaster-vpc`, subnet group `togglemaster-db-subnets`, **Public access: No**, SG existente `togglemaster-rds` (remover o `default`).
    - *Monitoring*: **desmarcar Enhanced Monitoring**.
    - *Additional configuration*: **Initial database name = `togglemaster`**. Sem isso o banco não é criado.
 3. Aguardar o status *Available* (5 a 10 minutos) e copiar o **Endpoint**.
@@ -81,7 +81,7 @@ Criar os dois na `togglemaster-vpc`, nesta ordem.
 
 - Nome `togglemaster-app`; AMI **Amazon Linux 2023**; tipo `t3.micro`.
 - Key pair: **vockey**.
-- *Network settings → Edit*: VPC `togglemaster-vpc`, sub-rede `togglemaster-public-a`, *Auto-assign public IP: Enable*, SG existente `sg-togglemaster-ec2`.
+- *Network settings → Edit*: VPC `togglemaster-vpc`, sub-rede `togglemaster-public-a`, *Auto-assign public IP: Enable*, SG existente `togglemaster-ec2`.
 - Storage: 8 GB gp3.
 
 > Usar Amazon Linux 2023 (Python 3.9). O `psycopg2-binary==2.9.5` do `requirements.txt` não tem pacote pronto para Python 3.12+, então no Ubuntu 24.04 o `pip install` falha.
