@@ -1,0 +1,23 @@
+info:
+  name: Criar flags
+  type: http
+  seq: 4
+
+http:
+  method: POST
+  url: "{{baseUrl}}/flags"
+  body:
+    type: json
+    data: |-
+      {
+        "name": "new-feature",
+        "is_enabled": true
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

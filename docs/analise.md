@@ -14,7 +14,7 @@ Requisito 1 do Tech Challenge: por que a aplicação é um monolito, vantagens e
 
 Fluxo de uma requisição: Gunicorn (porta 5000) → rota Flask → abre uma conexão com o PostgreSQL → executa o SQL → fecha a conexão → responde JSON.
 
-Endpoints: `GET /health`, `POST /flags`, `GET /flags`, `GET /flags/<nome>`, `PUT /flags/<nome>`.
+Endpoints: `GET /health`, `POST /flags`, `GET /flags`, `GET /flags/<nome>`, `PUT /flags/<nome>`, `DELETE /flags/<nome>`.
 
 ## 2. Por que é um monolito
 
@@ -64,7 +64,7 @@ Para a Fase 1 a troca é favorável: o domínio é pequeno e a prioridade é val
 
 ## 4. Outros pontos observados no código
 
-- **Não existe endpoint `DELETE`.** A proposta fala em "criar, ler, atualizar e deletar", mas `app.py` só implementa criar, ler e atualizar.
+- **O código original não tinha endpoint `DELETE`.** A proposta fala em "criar, ler, atualizar e deletar", mas `app.py` só implementava criar, ler e atualizar. Adicionamos o `DELETE /flags/<nome>` para completar o CRUD.
 - **A API não tem autenticação**: qualquer um que alcance a porta pode criar e alterar flags.
 - **`/health` não testa o banco**: responde `ok` mesmo com o RDS inacessível.
 - **A tabela não é criada automaticamente fora do Docker.** Na EC2 é preciso rodar `flask init-db` uma vez, senão toda rota de `/flags` retorna erro 500 (o README não menciona esse passo).

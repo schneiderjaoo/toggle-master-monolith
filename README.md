@@ -107,6 +107,7 @@ Você pode usar o Postman ou `curl` para interagir com a API rodando localmente 
 | `GET`  | `/flags`                    | N/A                                      | Lista todas as flags existentes. |
 | `GET`  | `/flags/<nome-da-flag>`     | N/A                                      | Retorna o status de uma flag.    |
 | `PUT`  | `/flags/<nome-da-flag>`     | `{"is_enabled": false}`                  | Atualiza o status de uma flag.   |
+| `DELETE` | `/flags/<nome-da-flag>`   | N/A                                      | Remove uma flag.                 |
 
 #### Exemplos com `curl`
 

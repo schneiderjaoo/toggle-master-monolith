@@ -1,0 +1,22 @@
+info:
+  name: Atualizar flag
+  type: http
+  seq: 5
+
+http:
+  method: PUT
+  url: "{{baseUrl}}/flags/new-feature"
+  body:
+    type: json
+    data: |-
+      {
+        "is_enabled": false
+      }
+  auth: inherit
+
+settings:
+  encodeUrl: true
+  timeout: 0
+  followRedirects: true
+  maxRedirects: 5
+  forwardAuthorizationHeader: false

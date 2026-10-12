@@ -93,7 +93,7 @@ Com a aplicação entendida, ler [analise.md](analise.md) acompanhando o `app.py
 
 - por que é um monolito e as vantagens/desvantagens para um MVP;
 - a tabela dos 12 fatores, com a evidência de cada um no código;
-- os pontos observados (sem `DELETE`, sem autenticação, `/health` não testa o banco).
+- os pontos observados (`DELETE` adicionado por nós, sem autenticação, `/health` não testa o banco).
 
 ## Passo 6 — Encerrar
 

@@ -24,6 +24,7 @@
 - **Security Group do RDS aceita apenas o Security Group da EC2** na porta 5432, em vez de um intervalo de IPs.
 - **SSH liberado só para um IP específico (`/32`)**.
 - **Credenciais do banco por variáveis de ambiente** na sessão da EC2, fora do código e do Git.
+- **Endpoint `DELETE /flags/<nome>` adicionado** ao `app.py`: o código original só criava, lia e atualizava, e o CRUD ficava incompleto.
 
 ## Desafios encontrados
 

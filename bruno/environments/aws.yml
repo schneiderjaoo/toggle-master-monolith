@@ -1,0 +1,5 @@
+name: aws
+variables:
+  - name: baseUrl
+    value: http://<ip-publico-da-ec2>:5000
+    description: O IP da EC2 muda a cada parada do Learner Lab, então no ambiente aws você só atualiza esse valor a cada sessão.
